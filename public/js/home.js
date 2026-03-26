@@ -6,26 +6,26 @@ const challengeText = document.querySelector('#challenge p');
 const challengeReward = document.querySelector('.challenge-reward strong');
 
 const factPool = [
-  'Le brocoli est compose a plus de 85% d\'eau: parfait pour rester leger.',
-  'Le brocoli aime la vapeur: cuisson courte = plus de vitamines conservees.',
-  'Sa couleur verte vient de la chlorophylle, championne du mode nature.',
-  'Il existe des varietes violettes, mais la team green reste iconique.'
+  'Broccoli is more than 85% water: perfect for staying light and fresh.',
+  'Broccoli loves steaming: short cooking = more vitamins preserved.',
+  'Its green color comes from chlorophyll, nature\'s champion.',
+  'Purple broccoli varieties exist, but the green team stays iconic.'
 ];
 
 const challengePool = [
   {
-    title: 'Defi Sprint: Brocco Brain',
-    description: 'Cite deux vitamines presentes dans le brocoli en 10 secondes.',
+    title: 'Sprint Challenge: Broccoli Brain',
+    description: 'Name two vitamins in broccoli in 10 seconds.',
     reward: '+120 leaf points'
   },
   {
-    title: 'Defi Duo: Green Combo',
-    description: 'Associe le brocoli avec une source de proteines pour un repas smart.',
+    title: 'Duo Challenge: Green Combo',
+    description: 'Pair broccoli with a protein source for a smart meal.',
     reward: '+150 leaf points'
   },
   {
-    title: 'Defi Expert: Myth Buster',
-    description: 'Explique pourquoi le brocoli n\'est pas juste un legume "diet".',
+    title: 'Expert Challenge: Myth Buster',
+    description: 'Explain why broccoli is not just a "diet" vegetable.',
     reward: '+180 leaf points'
   }
 ];
