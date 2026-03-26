@@ -9,7 +9,7 @@ composer.phar
 
 # IDE and Editor files
 # .vscode/
-# .idea/
+.idea/
 # *.sublime-project
 # *.sublime-workspace
 
