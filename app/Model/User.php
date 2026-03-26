@@ -8,9 +8,11 @@ class User
 {
     private $id;
     private $email;
-    private $password;
     private $username;
     private $createdAt;
+
+    // Le hash du mot de passe reste strictement privé : aucun getter exposé.
+    private $passwordHash;
 
     private $db;
 
@@ -19,11 +21,27 @@ class User
         $this->db = $db;
     }
 
-    public function getId(): ?int      { return $this->id       ? (int) $this->id : null; }
+    public function getId(): ?int        { return $this->id        ? (int) $this->id : null; }
     public function getEmail(): ?string    { return $this->email; }
-    public function getPassword(): ?string { return $this->password; }
     public function getUsername(): ?string { return $this->username; }
     public function getCreatedAt(): ?string { return $this->createdAt; }
+
+    // Applique le poivre avant tout hash ou vérification.
+    // Recette : mot de passe + "brocoli" encodé en base64 (YnJvY29saQ==).
+    private function pepper(string $password): string
+    {
+        return $password . base64_encode('brocoli');
+    }
+
+    // Vérifie le mot de passe en clair contre le hash stocké.
+    // Le plain text ne sort jamais de cette méthode : retourne uniquement un bool.
+    public function verifyPassword(string $plainPassword): bool
+    {
+        if ($this->passwordHash === null) {
+            return false;
+        }
+        return password_verify($this->pepper($plainPassword), $this->passwordHash);
+    }
 
     public function all(): array
     {
@@ -41,11 +59,11 @@ class User
             return null;
         }
 
-        $this->id        = $data['id'];
-        $this->email     = $data['email'];
-        $this->password  = $data['password'];
-        $this->username  = $data['username'];
-        $this->createdAt = $data['created_at'];
+        $this->id           = $data['id'];
+        $this->email        = $data['email'];
+        $this->passwordHash = $data['password'];
+        $this->username     = $data['username'];
+        $this->createdAt    = $data['created_at'];
 
         return $this;
     }
@@ -60,11 +78,11 @@ class User
             return null;
         }
 
-        $this->id        = $data['id'];
-        $this->email     = $data['email'];
-        $this->password  = $data['password'];
-        $this->username  = $data['username'];
-        $this->createdAt = $data['created_at'];
+        $this->id           = $data['id'];
+        $this->email        = $data['email'];
+        $this->passwordHash = $data['password'];
+        $this->username     = $data['username'];
+        $this->createdAt    = $data['created_at'];
 
         return $this;
     }
@@ -78,7 +96,11 @@ class User
 
     public function create(string $email, string $password, string $username): int
     {
-        $hash  = password_hash($password, PASSWORD_BCRYPT);
+        if (strlen($password) < 12) {
+            throw new \InvalidArgumentException('Le mot de passe doit contenir au moins 12 caractères.');
+        }
+
+        $hash  = password_hash($this->pepper($password), PASSWORD_BCRYPT);
         $query = $this->db->prepare(
             'INSERT INTO users (email, password, username) VALUES (?, ?, ?)'
         );

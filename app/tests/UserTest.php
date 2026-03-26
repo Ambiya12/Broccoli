@@ -11,6 +11,8 @@ class UserTest extends TestCase
     private PDO $pdo;
     private User $user;
 
+    private const VALID_PASSWORD = 'motdepasse123';
+
     protected function setUp(): void
     {
         $this->pdo = new PDO('sqlite::memory:');
@@ -29,23 +31,65 @@ class UserTest extends TestCase
 
     public function testCreateReturnsId(): void
     {
-        $id = $this->user->create('alice@example.com', 'secret', 'Alice');
+        $id = $this->user->create('alice@example.com', self::VALID_PASSWORD, 'Alice');
         $this->assertIsInt($id);
         $this->assertGreaterThan(0, $id);
     }
 
-    public function testCreateHashesPassword(): void
+    public function testCreateThrowsForPasswordUnder12Chars(): void
     {
-        $this->user->create('hash@example.com', 'mypassword', 'Hash');
-        $found = $this->user->findByEmail('hash@example.com');
-        $this->assertNotNull($found);
-        $this->assertNotEquals('mypassword', $found->getPassword());
-        $this->assertTrue(password_verify('mypassword', $found->getPassword()));
+        $this->expectException(\InvalidArgumentException::class);
+        $this->user->create('short@example.com', 'court', 'Short');
+    }
+
+    public function testPasswordIsNeverStoredInPlainText(): void
+    {
+        $this->user->create('hash@example.com', self::VALID_PASSWORD, 'Hash');
+
+        // Vérification directe en base : le champ password ne doit pas contenir le plain text
+        $stmt = $this->pdo->query("SELECT password FROM users WHERE email = 'hash@example.com'");
+        $stored = $stmt->fetchColumn();
+
+        $this->assertNotEquals(self::VALID_PASSWORD, $stored);
+        // Le hash bcrypt commence toujours par $2y$
+        $this->assertStringStartsWith('$2y$', $stored);
+    }
+
+    public function testVerifyPasswordReturnsFalseOnFreshInstanceWithNoHashLoaded(): void
+    {
+        // Un User instancié mais sans findByEmail/findById n'a pas de hash en mémoire
+        $fresh = new User($this->pdo);
+        $this->assertFalse($fresh->verifyPassword(self::VALID_PASSWORD));
+    }
+
+    public function testVerifyPasswordReturnsTrueForCorrectPassword(): void
+    {
+        $this->user->create('verify@example.com', self::VALID_PASSWORD, 'Verify');
+        $found = $this->user->findByEmail('verify@example.com');
+        $this->assertTrue($found->verifyPassword(self::VALID_PASSWORD));
+    }
+
+    public function testVerifyPasswordReturnsFalseForWrongPassword(): void
+    {
+        $this->user->create('wrong@example.com', self::VALID_PASSWORD, 'Wrong');
+        $found = $this->user->findByEmail('wrong@example.com');
+        $this->assertFalse($found->verifyPassword('mauvaismdp999'));
+    }
+
+    public function testVerifyPasswordReturnsFalseWithoutPepper(): void
+    {
+        // Un attaquant qui retrouverait le hash sans le poivre ne peut pas vérifier directement
+        $this->user->create('pepper@example.com', self::VALID_PASSWORD, 'Pepper');
+        $stmt   = $this->pdo->query("SELECT password FROM users WHERE email = 'pepper@example.com'");
+        $hash   = $stmt->fetchColumn();
+
+        // Vérification sans poivre : doit échouer
+        $this->assertFalse(password_verify(self::VALID_PASSWORD, $hash));
     }
 
     public function testFindByEmailReturnsUserInstance(): void
     {
-        $this->user->create('find@example.com', 'pass', 'Find');
+        $this->user->create('find@example.com', self::VALID_PASSWORD, 'Find');
         $found = $this->user->findByEmail('find@example.com');
         $this->assertInstanceOf(User::class, $found);
         $this->assertEquals('Find', $found->getUsername());
@@ -60,7 +104,7 @@ class UserTest extends TestCase
 
     public function testFindByIdReturnsUserInstance(): void
     {
-        $id    = $this->user->create('byid@example.com', 'pass', 'ById');
+        $id    = $this->user->create('byid@example.com', self::VALID_PASSWORD, 'ById');
         $found = $this->user->findById($id);
         $this->assertInstanceOf(User::class, $found);
         $this->assertEquals('byid@example.com', $found->getEmail());
@@ -76,7 +120,7 @@ class UserTest extends TestCase
 
     public function testEmailExistsReturnsTrueForExistingEmail(): void
     {
-        $this->user->create('exists@example.com', 'pass', 'Exists');
+        $this->user->create('exists@example.com', self::VALID_PASSWORD, 'Exists');
         $this->assertTrue($this->user->emailExists('exists@example.com'));
     }
 
@@ -87,8 +131,8 @@ class UserTest extends TestCase
 
     public function testAllReturnsAllUsers(): void
     {
-        $this->user->create('a@example.com', 'pass', 'A');
-        $this->user->create('b@example.com', 'pass', 'B');
+        $this->user->create('a@example.com', self::VALID_PASSWORD, 'A');
+        $this->user->create('b@example.com', self::VALID_PASSWORD, 'B');
         $all = $this->user->all();
         $this->assertCount(2, $all);
     }

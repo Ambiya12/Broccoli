@@ -39,6 +39,8 @@ class AuthController
 
         if ($email === '' || $password === '' || $username === '') {
             $error = 'Tous les champs sont requis.';
+        } elseif (strlen($password) < 12) {
+            $error = 'Le mot de passe doit contenir au moins 12 caractères.';
         } elseif ($this->userModel->emailExists($email)) {
             $error = 'Cet email est déjà utilisé.';
         } else {
@@ -70,7 +72,9 @@ class AuthController
 
         $user = $this->userModel->findByEmail($email);
 
-        if (!$user || !password_verify($password, $user->getPassword())) {
+        // La vérification est entièrement encapsulée dans le modèle.
+        // Le controller ne voit jamais le hash ni le plain text comparé.
+        if (!$user || !$user->verifyPassword($password)) {
             $error = 'Email ou mot de passe incorrect.';
         } else {
             $token = $this->sessionModel->create($user->getId());
