@@ -3,11 +3,12 @@
 
 namespace App\Controller;
 
+use App\core\Database;
 use App\Model\User;
 
 class HomeController {
     public function index() {
-        $userModel = new User();
+        $userModel = new User(Database::getConnection());
         $users = $userModel->all();
 
         $features = [
