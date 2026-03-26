@@ -13,27 +13,27 @@ class HomeController {
         $features = [
             [
                 'title' => 'Brocco Quest',
-                'description' => 'Accomplis des mini missions et gagne des points feuilles.',
+                'description' => 'Complete mini missions and earn leaf points.',
             ],
             [
                 'title' => 'Fact Spinner',
-                'description' => 'Decouvre des anecdotes rigolotes sur le brocoli en un clic.',
+                'description' => 'Discover fun facts about broccoli with one click.',
             ],
             [
                 'title' => 'Green Crew',
-                'description' => 'Forme ton equipe legume et grimpe au classement.',
+                'description' => 'Build your vegetable team and climb the leaderboard.',
             ],
         ];
 
         $facts = [
-            'Le brocoli appartient a la famille des cruciferes, comme le chou-fleur.',
-            'Le brocoli contient de la vitamine C, des fibres et des antioxydants.',
-            'Son nom vient de l\'italien "broccolo", qui signifie jeune pousse.',
+            'Broccoli belongs to the cruciferous family, just like cauliflower.',
+            'Broccoli is packed with Vitamin C, fiber, and powerful antioxidants.',
+            'Its name comes from the Italian "broccolo", meaning young shoot.',
         ];
 
         $dailyChallenge = [
-            'title' => 'Defi du jour: Green Combo',
-            'description' => 'Trouve 3 bienfaits sante du brocoli en moins de 20 secondes.',
+            'title' => 'Daily Challenge: Green Combo',
+            'description' => 'Find 3 health benefits of broccoli in less than 20 seconds.',
             'reward' => '+150 leaf points',
         ];
 
