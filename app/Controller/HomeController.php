@@ -16,4 +16,8 @@ class HomeController {
     public function login() {
         require_once __DIR__ . '/../views/LoginPage.php';
     }
+
+    public function signup() {
+        require_once __DIR__ . '/../views/Signup.php';
+    }
 }

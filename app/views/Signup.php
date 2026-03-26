@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Inscription</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
 
@@ -12,22 +12,29 @@
     <main class="login-wrapper">
         <img src="/assets/broccoli-image.png" alt="Broccoli" style="width: 200px; margin-bottom: 40px;">
         <section class="login-card">
-            <h1>Connexion</h1>
+            <h1>Inscription</h1>
 
             <form class="login-form" method="post" action="#">
+                <label for="fullname">Nom complet</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Brocoli CHAUD" required>
+
                 <label for="email">Adresse email</label>
                 <input type="email" id="email" name="email" placeholder="broccoli@exemple.com" required>
 
                 <label for="password">Mot de passe</label>
                 <input type="password" id="password" name="password" placeholder="********" required>
 
-                <button type="submit">Se connecter</button>
+                <label for="confirm_password">Confirmer le mot de passe</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="********" required>
+
+                <button type="submit">S'inscrire</button>
             </form>
 
-            <a class="back-link" href="/signup">Pas de compte ? S'inscrire</a>
+            <a class="back-link" href="/login">Déjà un compte ? Se connecter</a>
         </section>
         <img src="/assets/broccoli-image.png" alt="Broccoli" style="width: 200px; margin-bottom: 40px;">
     </main>
 </body>
 
 </html>
+
