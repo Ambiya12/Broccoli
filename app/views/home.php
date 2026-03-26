@@ -59,6 +59,7 @@
                 <h2>Brocco Facts</h2>
                 <p>Des infos utiles et droles que tu peux sortir pendant les repas.</p>
             </div>
+            <button type="button" class="btn btn-fact" id="fact-spinner">Fact Spinner</button>
             <div class="facts-list">
                 <?php foreach ($facts as $fact): ?>
                     <article class="fact-item">
@@ -76,6 +77,7 @@
             <div class="challenge-reward">
                 <p>Recompense</p>
                 <strong><?= htmlspecialchars($dailyChallenge['reward']) ?></strong>
+                <button type="button" class="btn btn-refresh" id="challenge-reroll">Nouveau Defi</button>
             </div>
         </section>
 
@@ -98,6 +100,8 @@
     <footer class="site-footer">
         <p>Broccoli Arcade - Frontend pur PHP/CSS/JS sans framework.</p>
     </footer>
+
+    <script src="/js/home.js"></script>
 </body>
 
 </html>

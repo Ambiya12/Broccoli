@@ -153,6 +153,24 @@ main,
 	color: #fff;
 }
 
+.btn-fact,
+.btn-refresh {
+	background: #fff;
+	color: var(--green-900);
+	border-color: rgba(31, 106, 63, 0.28);
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 0.9rem;
+}
+
+.btn-fact {
+	margin-bottom: 0.8rem;
+}
+
+.btn-refresh {
+	margin-top: 0.6rem;
+}
+
 .auth-hint {
 	margin: 0;
 	font-size: 0.9rem;
@@ -222,6 +240,12 @@ main,
 	border-radius: 10px;
 	background: #f6ffe9;
 	font-weight: 600;
+}
+
+.fact-item.is-highlighted {
+	outline: 3px solid rgba(185, 255, 102, 0.9);
+	transform: translateX(3px);
+	transition: transform 180ms ease;
 }
 
 .fact-item p {
