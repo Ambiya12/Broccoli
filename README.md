@@ -1,4 +1,4 @@
-# PHP Skeleton MVC
+# Broccoli
 
 A minimalist MVC skeleton to quickly start your PHP projects. Clone this repo, install dependencies, and start coding.
 
@@ -6,10 +6,10 @@ A minimalist MVC skeleton to quickly start your PHP projects. Clone this repo, i
 
 Because starting from scratch every time is tedious. This skeleton gives you a clean foundation with:
 
--   A simple and clear MVC architecture
--   A functional router (GET/POST)
--   PSR-4 autoloading configured
--   A consistent folder structure
+- A simple and clear MVC architecture
+- A functional router (GET/POST)
+- PSR-4 autoloading configured
+- A consistent folder structure
 
 Perfect for testing an idea quickly, learning the MVC pattern, or prototyping without wasting time on configuration.
 
@@ -112,10 +112,10 @@ vendor/bin/phpunit
 
 ## Notes
 
--   The router is basic but extensible
--   No heavy framework, just PHP
--   No ORM by default (add Doctrine or Eloquent if you want)
--   Views use native PHP (no Twig/Blade)
+- The router is basic but extensible
+- No heavy framework, just PHP
+- No ORM by default (add Doctrine or Eloquent if you want)
+- Views use native PHP (no Twig/Blade)
 
 ## License
 
