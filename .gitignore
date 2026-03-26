@@ -1,0 +1,53 @@
+# Composer
+/vendor
+composer.phar
+
+# Environment files (uncomment if you add .env support)
+# .env
+# .env.local
+# .env.*.local
+
+# IDE and Editor files
+# .vscode/
+# .idea/
+# *.sublime-project
+# *.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs
+# *.log
+# logs/
+
+# Cache and temporary files
+# cache/
+# tmp/
+# temp/
+
+# PHPUnit
+# .phpunit.result.cache
+# coverage/
+# phpunit.xml (if you want to keep phpunit.xml.dist only)
+
+# Node modules (uncomment if you add frontend build tools)
+# node_modules/
+# package-lock.json
+# yarn.lock
+
+# Build files (uncomment if you add frontend build tools)
+# /public/dist/
+# /public/build/
+# /public/assets/compiled/
+
+# Database (uncomment if you use SQLite)
+# *.sqlite
+# *.db
+
+# Uploads (uncomment if you add file upload functionality)
+# /public/uploads/
+# /storage/

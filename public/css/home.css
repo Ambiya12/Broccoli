@@ -1,0 +1,142 @@
+/* Reset minimal */
+body,
+h1,
+h2,
+p,
+ul,
+li {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.home-page {
+	background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+	color: #eee;
+}
+
+/* Hero section */
+.hero {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 20px;
+	animation: fadeIn 1.5s ease-out;
+}
+
+.hero h1 {
+	font-size: 3rem;
+	margin-bottom: 20px;
+	color: #fff;
+}
+
+.hero p {
+	font-size: 1.2rem;
+	margin-bottom: 30px;
+	color: #bbb;
+}
+
+.btn {
+	background: #444;
+	color: #fff;
+	padding: 12px 25px;
+	border-radius: 30px;
+	text-decoration: none;
+	font-weight: 600;
+	transition: all 0.3s ease;
+}
+
+.btn:hover {
+	background: #666;
+	transform: translateY(-3px);
+}
+
+/* Users section */
+.users-section {
+	padding: 50px 20px;
+	text-align: center;
+}
+
+.users-section h2 {
+	font-size: 2rem;
+	margin-bottom: 30px;
+	color: #fff;
+}
+
+.users-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+}
+
+.user-card {
+	background: #2a2a2a;
+	padding: 15px 20px;
+	border-radius: 12px;
+	min-width: 120px;
+	max-width: 200px;
+	text-align: center;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	animation: cardFadeIn 1s ease forwards;
+	opacity: 0;
+}
+
+.user-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.user-id {
+	display: block;
+	font-weight: 600;
+	color: #aaa;
+}
+
+.user-name {
+	display: block;
+	font-size: 1.1rem;
+	color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes cardFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Stagger animations for user cards */
+.user-card:nth-child(1) {
+	animation-delay: 0.1s;
+}
+.user-card:nth-child(2) {
+	animation-delay: 0.2s;
+}
+.user-card:nth-child(3) {
+	animation-delay: 0.3s;
+}
+.user-card:nth-child(4) {
+	animation-delay: 0.4s;
+}
