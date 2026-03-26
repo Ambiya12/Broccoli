@@ -3,9 +3,9 @@
 composer.phar
 
 # Environment files (uncomment if you add .env support)
-# .env
-# .env.local
-# .env.*.local
+ .env
+ .env.local
+ .env.*.local
 
 # IDE and Editor files
 # .vscode/
@@ -30,9 +30,9 @@ Thumbs.db
 # temp/
 
 # PHPUnit
-# .phpunit.result.cache
-# coverage/
-# phpunit.xml (if you want to keep phpunit.xml.dist only)
+ .phpunit.result.cache
+ coverage/
+ phpunit.xml (if you want to keep phpunit.xml.dist only)
 
 # Node modules (uncomment if you add frontend build tools)
 # node_modules/
@@ -51,10 +51,7 @@ Thumbs.db
 # Uploads (uncomment if you add file upload functionality)
 # /public/uploads/
 # /storage/
-<<<<<<< Updated upstream
 
 # Claude
 CLAUDE.md
 .claude
-=======
->>>>>>> Stashed changes
