@@ -11,16 +11,16 @@ class Database
     public static function getConnection(): PDO
     {
         if (self::$instance === null) {
-            $host     = $_ENV['DB_HOST']     ?? 'localhost';
-            $dbname   = $_ENV['DB_NAME']     ?? 'brocolis';
-            $user     = $_ENV['DB_USER']     ?? 'root';
-            $password = $_ENV['DB_PASSWORD'] ?? '';
+            $host = $_ENV["DB_HOST"] ?? "127.0.0.1";
+            $dbname = $_ENV["DB_NAME"];
+            $user = $_ENV["DB_USER"] ?? "root";
+            $password = $_ENV["DB_PASSWORD"] ?? "";
 
             self::$instance = new PDO(
                 "mysql:host={$host};dbname={$dbname};charset=utf8mb4",
                 $user,
                 $password,
-                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
             );
         }
 

@@ -15,9 +15,12 @@
         <section class="login-card">
             <h1 class="title">Inscription</h1>
 
-            <form class="login-form" method="post" action="#">
-                <label for="fullname">Nom complet</label>
-                <input type="text" id="fullname" name="fullname" placeholder="Brocoli CHAUD" required>
+            <?php if (!empty($error)): ?>
+                <p class="error"><?= htmlspecialchars($error) ?></p>
+            <?php endif; ?>
+            <form class="login-form" method="post" action="/register">
+                <label for="username">Nom complet</label>
+                <input type="text" id="username" name="username" placeholder="Brocoli CHAUD" required>
 
                 <label for="email">Adresse email</label>
                 <input type="email" id="email" name="email" placeholder="broccoli@exemple.com" required>
