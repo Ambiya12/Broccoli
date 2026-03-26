@@ -4,6 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../app/core/Router/router.php';
 
 use App\Controller\AuthController;
+use App\Controller\CollectionController;
 use App\Controller\HomeController;
 use App\core\Middleware\AdminMiddleware;
 use App\core\Middleware\AuthMiddleware;
@@ -23,5 +24,7 @@ $router->get('/logout',    [AuthController::class, 'logout'],    [AuthMiddleware
 
 // Routes protégées — admin uniquement (exemple, décommenter pour utiliser)
 // $router->get('/admin', [AdminController::class, 'index'], [AuthMiddleware::class, AdminMiddleware::class]);
+
+$router->get('/collection', [CollectionController::class, 'index']);
 
 $router->run();
