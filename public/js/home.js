@@ -22,7 +22,9 @@ document.addEventListener("mousemove", (e) => {
 const navLinks = document.querySelectorAll('.main-nav a');
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-        e.preventDefault();
+        if (e.currentTarget.getAttribute('href') === '#') {
+            e.preventDefault();
+        }
         navLinks.forEach(l => l.classList.remove('active'));
         e.target.classList.add('active');
     });

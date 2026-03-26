@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\core\Database;
+use App\core\Middleware\AuthMiddleware;
 use App\Model\User;
 
 class HomeController {
@@ -38,6 +39,7 @@ class HomeController {
             'reward' => '+150 leaf points',
         ];
 
+        $isLoggedIn = (new AuthMiddleware())->isAuthenticated();
         require_once __DIR__ . '/../views/home.php';
     }
 

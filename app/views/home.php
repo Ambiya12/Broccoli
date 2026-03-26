@@ -18,19 +18,23 @@
                 </div>
             </div>
             <nav class="main-nav">
-                <a href="#">main</a>
+                <a href="/">main</a>
                 <a href="#">recipe</a>
                 <a href="#">fun fact</a>
-                <a href="#">collection</a>
+                <a href="/collection">collection</a>
             </nav>
             <div class="main-nav">
-                <a href="#">sign in</a>
+                <?php if ($isLoggedIn): ?>
+                    <a href="/logout">logout</a>
+                <?php else: ?>
+                    <a href="/login">login</a>
+                <?php endif; ?>
             </div>
         </header>
 
         <main class="hero-section">
             <h1 class="hero-title left">Broc</h1>
-            
+
             <div class="center-image">
                 <img src="/assets/Broccoli.png" alt="Broccoli" />
             </div>
@@ -51,13 +55,13 @@
                     simplicity and health.
                 </p>
             </div>
-            
+
             <div class="bottom-right">
                 <div class="product-card">
                     <img src="/assets/Broccoli.png" alt="Broccoli">
                     <span class="year">2025</span>
                 </div>
-                <a href="#" class="btn-new-collection">new harvest ↗</a>
+                <a href="/collection" class="btn-new-collection">new harvest ↗</a>
             </div>
         </footer>
     </div>

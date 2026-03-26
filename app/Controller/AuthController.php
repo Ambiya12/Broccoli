@@ -91,7 +91,7 @@ class AuthController
             exit();
         }
 
-        require_once __DIR__ . "/../views/login.php";
+        require_once __DIR__ . "/../views/LoginPage.php";
     }
 
     public function dashboard(): void
@@ -111,6 +111,7 @@ class AuthController
         }
 
         $user = $this->userModel->findById($session->getUserId());
+        $isLoggedIn = true;
         require_once __DIR__ . "/../views/home.php";
     }
 
@@ -123,10 +124,11 @@ class AuthController
             setcookie("session_token", "", [
                 "expires" => time() - 3600,
                 "path" => "/",
+                "httponly" => true,
             ]);
         }
 
-        header("Location: /login");
+        header("Location: /");
         exit();
     }
 }

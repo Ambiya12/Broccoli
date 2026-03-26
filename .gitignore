@@ -6,6 +6,10 @@ composer.phar
 .env
 .env.local
 .env.*.local
+.env.backup
+*.env.backup
+.env.bak
+*.env.bak
 
 # IDE and Editor files
 # .vscode/
@@ -31,7 +35,11 @@ Thumbs.db
 
 # PHPUnit
 .phpunit.result.cache
+.phpunit.cache/
 /public/coverage/
+/coverage/
+/build/coverage/
+/report/
 
 # Node modules
 node_modules/

@@ -71,7 +71,7 @@ class File {
 
     public function fileExists(string $name): bool
     {
-        $query = $this->db->prepare('SELECT id FROM files WHERE name = ?');
+        $query = $this->db->prepare('SELECT fileId FROM files WHERE name = ?');
         $query->execute([$name]);
         return $query->fetch() !== false;
     }
