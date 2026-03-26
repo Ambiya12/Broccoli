@@ -13,6 +13,7 @@
     <source>
         <include>
             <directory suffix=".php">app/Model</directory>
+            <directory suffix=".php">app/core/Middleware</directory>
         </include>
     </source>
 
