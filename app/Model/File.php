@@ -7,6 +7,7 @@ use PDO;
 class File {
     private $fileId;
     private $name;
+    private $extension;
     private $size;
     private $createdAt;
 
@@ -21,14 +22,14 @@ class File {
      * Récupérer tous les fichiers
      */
     public function all(): array {
-        $query = $this->db->query('SELECT id, name, size, created_at FROM files');
+        $query = $this->db->query('SELECT fileId, name, extension, size, created_at FROM files');
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
      * Récupérer un fichier par ID
      */
-    public function findById($fileId): ?array {
+    public function findById($fileId): ?self {
         $query = $this->db->prepare('SELECT * FROM files WHERE fileId = ?');
         $query->execute([$fileId]);
         $data = $query->fetch(PDO::FETCH_ASSOC);
@@ -39,6 +40,7 @@ class File {
 
         $this->fileId    = $data['fileId'];
         $this->name      = $data['name'];
+        $this->extension = $data['extension'];
         $this->size      = $data['size'];
         $this->createdAt = $data['created_at'];
 
@@ -60,6 +62,7 @@ class File {
 
         $this->fileId    = $data['fileId'];
         $this->name      = $data['name'];
+        $this->extension = $data['extension'];
         $this->size      = $data['size'];
         $this->createdAt = $data['created_at'];
 
@@ -75,10 +78,11 @@ class File {
 
     public function create(string $name, int $size): int
     {
+        $extension = pathinfo($name, PATHINFO_EXTENSION);
         $query = $this->db->prepare(
-            'INSERT INTO files (name, size) VALUES (?, ?)'
+            'INSERT INTO files (name, extension, size) VALUES (?, ?, ?)'
         );
-        $query->execute([$name, $size]);
+        $query->execute([$name, $extension, $size]);
         return (int) $this->db->lastInsertId();
     }
 
@@ -111,23 +115,19 @@ class File {
     }
 
     /**
-     * Get the value of size
+     * Get the value of extension
      */ 
-    public function getSize()
+    public function getExtension()
     {
-        return $this->size;
+        return $this->extension;
     }
 
     /**
-     * Set the value of size
-     *
-     * @return  self
+     * Get the base name (without extension)
      */ 
-    public function setSize($size)
+    public function getBaseName()
     {
-        $this->size = $size;
-
-        return $this;
+        return pathinfo($this->name, PATHINFO_FILENAME);
     }
 }
 
