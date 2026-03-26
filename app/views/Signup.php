@@ -9,10 +9,11 @@
 </head>
 
 <body class="login-page">
+<h2 class="login-banner">🥦🥦🥦 Bienvenue chez les Broccolis 🥦🥦🥦</h2>
     <main class="login-wrapper">
         <img src="/assets/broccoli-image.png" alt="Broccoli" style="width: 200px; margin-bottom: 40px;">
         <section class="login-card">
-            <h1>Inscription</h1>
+            <h1 class="title">Inscription</h1>
 
             <form class="login-form" method="post" action="#">
                 <label for="fullname">Nom complet</label>
