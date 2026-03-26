@@ -13,7 +13,10 @@
     <div class="page-bg" aria-hidden="true"></div>
 
     <header class="site-header">
-        <a class="logo" href="/">Broccoli Arcade</a>
+        <a class="logo" href="/">
+            <img src="/images/broccoli.svg" alt="Broccoli Arcade Logo" class="logo-img">
+            <span class="logo-text">Broccoli Arcade</span>
+        </a>
         <nav aria-label="Main Navigation">
             <ul class="nav-list">
                 <li><a href="#features">Fun Zones</a></li>
