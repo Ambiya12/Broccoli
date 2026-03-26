@@ -1,55 +1,29 @@
-const factButton = document.getElementById('fact-spinner');
-const challengeButton = document.getElementById('challenge-reroll');
-const factItems = Array.from(document.querySelectorAll('.fact-item p'));
-const challengeTitle = document.querySelector('#challenge h2');
-const challengeText = document.querySelector('#challenge p');
-const challengeReward = document.querySelector('.challenge-reward strong');
+document.addEventListener("mousemove", (e) => {
+    const x = e.clientX / window.innerWidth - 0.5;
+    const y = e.clientY / window.innerHeight - 0.5;
+    
+    const centerImg = document.querySelector(".center-image img");
+    const heroLeft = document.querySelector(".hero-title.left");
+    const heroRight = document.querySelector(".hero-title.right");
 
-const factPool = [
-  'Broccoli is more than 85% water: perfect for staying light and fresh.',
-  'Broccoli loves steaming: short cooking = more vitamins preserved.',
-  'Its green color comes from chlorophyll, nature\'s champion.',
-  'Purple broccoli varieties exist, but the green team stays iconic.'
-];
+    if (centerImg) {
+        centerImg.style.transform = `translate(${x * 20}px, ${y * 20}px) rotate(${x * 5}deg)`;
+    }
+    
+    if (heroLeft) {
+        heroLeft.style.transform = `translate(${-x * 30}px, ${-y * 10}px)`;
+    }
+    
+    if (heroRight) {
+        heroRight.style.transform = `translate(${-x * 30}px, ${-y * 10}px)`;
+    }
+});
 
-const challengePool = [
-  {
-    title: 'Sprint Challenge: Broccoli Brain',
-    description: 'Name two vitamins in broccoli in 10 seconds.',
-    reward: '+120 leaf points'
-  },
-  {
-    title: 'Duo Challenge: Green Combo',
-    description: 'Pair broccoli with a protein source for a smart meal.',
-    reward: '+150 leaf points'
-  },
-  {
-    title: 'Expert Challenge: Myth Buster',
-    description: 'Explain why broccoli is not just a "diet" vegetable.',
-    reward: '+180 leaf points'
-  }
-];
-
-function randomItem(list) {
-  return list[Math.floor(Math.random() * list.length)];
-}
-
-if (factButton && factItems.length > 0) {
-  factButton.addEventListener('click', () => {
-    const randomFact = randomItem(factPool);
-    factItems[0].textContent = randomFact;
-    factItems[0].parentElement.classList.add('is-highlighted');
-    window.setTimeout(() => {
-      factItems[0].parentElement.classList.remove('is-highlighted');
-    }, 450);
-  });
-}
-
-if (challengeButton && challengeTitle && challengeText && challengeReward) {
-  challengeButton.addEventListener('click', () => {
-    const challenge = randomItem(challengePool);
-    challengeTitle.textContent = challenge.title;
-    challengeText.textContent = challenge.description;
-    challengeReward.textContent = challenge.reward;
-  });
-}
+const navLinks = document.querySelectorAll('.main-nav a');
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        e.target.classList.add('active');
+    });
+});

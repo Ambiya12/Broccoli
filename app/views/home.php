@@ -1,110 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broccoli Arcade</title>
-    <meta name="description" content="A fun world of broccoli: mini challenges, facts, and green energy.">
+    <title>Broccoli Store</title>
     <link rel="stylesheet" href="/css/home.css">
 </head>
-
-<body class="home-page">
-    <div class="page-bg" aria-hidden="true"></div>
-
-    <header class="site-header">
-        <a class="logo" href="/">
-            <img src="/images/broccoli.svg" alt="Broccoli Arcade Logo" class="logo-img">
-            <span class="logo-text">Broccoli Arcade</span>
-        </a>
-        <nav aria-label="Main Navigation">
-            <ul class="nav-list">
-                <li><a href="#features">Fun Zones</a></li>
-                <li><a href="#facts">Broccoli Facts</a></li>
-                <li><a href="#challenge">Daily Challenge</a></li>
-                <li><a href="#users">Green Crew</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <p class="hero-kicker">Cartoon Arcade Experience</p>
-            <h1>The coolest broccoli kingdom</h1>
-            <p class="hero-text">
-                Explore health info, amazing facts, and mini challenges.
-                Once logged in, you can save your score and unlock special missions.
-            </p>
-            <div class="hero-actions">
-                <a class="btn btn-primary" href="#challenge">Play Now</a>
-                <a class="btn btn-secondary" href="#facts">Explore Facts</a>
+<body>
+    <div class="site-wrapper">
+        <header class="top-nav">
+            <div class="logo">
+                <div class="logo-text">
+                    Broc<br>coli
+                </div>
+                <div class="logo-stars">
+                    **<br>*
+                </div>
             </div>
-            <p class="auth-hint">Login/signup managed by the auth team.</p>
-        </section>
+            <nav class="main-nav">
+                <a href="#">main</a>
+                <a href="#">recipe</a>
+                <a href="#">fun fact</a>
+                <a href="#">collection</a>
+            </nav>
+            <div class="main-nav">
+                <a href="#">sign in</a>
+            </div>
+        </header>
 
-        <section id="features" class="section">
-            <div class="section-head">
-                <h2>Fun Zones</h2>
-                <p>Three spaces to learn and have fun in green gamer mode.</p>
+        <main class="hero-section">
+            <h1 class="hero-title left">Broc</h1>
+            
+            <div class="center-image">
+                <img src="/assets/Broccoli.png" alt="Broccoli" />
             </div>
-            <div class="feature-grid">
-                <?php foreach ($features as $feature): ?>
-                    <article class="feature-card">
-                        <h3><?= htmlspecialchars($feature['title']) ?></h3>
-                        <p><?= htmlspecialchars($feature['description']) ?></p>
-                    </article>
-                <?php endforeach; ?>
-            </div>
-        </section>
 
-        <section id="facts" class="section">
-            <div class="section-head">
-                <h2>Broccoli Facts</h2>
-                <p>Useful and fun info you can share at dinner time.</p>
-            </div>
-            <button type="button" class="btn btn-fact" id="fact-spinner">Fact Spinner</button>
-            <div class="facts-list">
-                <?php foreach ($facts as $fact): ?>
-                    <article class="fact-item">
-                        <p><?= htmlspecialchars($fact) ?></p>
-                    </article>
-                <?php endforeach; ?>
-            </div>
-        </section>
+            <h1 class="hero-title right">coli</h1>
+        </main>
 
-        <section id="challenge" class="section challenge-panel">
-            <div>
-                <h2><?= htmlspecialchars($dailyChallenge['title']) ?></h2>
-                <p><?= htmlspecialchars($dailyChallenge['description']) ?></p>
+        <footer class="bottom-section">
+            <div class="bottom-left">
+                <div class="recycle-icon">
+                    プラ
+                </div>
+                <h2>Food without<br>excess. Only health.</h2>
+                <p>
+                    Modern vegetables, natural<br>
+                    vitamins, and honest taste.<br>
+                    For those who choose<br>
+                    simplicity and health.
+                </p>
             </div>
-            <div class="challenge-reward">
-                <p>Reward</p>
-                <strong><?= htmlspecialchars($dailyChallenge['reward']) ?></strong>
-                <button type="button" class="btn btn-refresh" id="challenge-reroll">New Challenge</button>
+            
+            <div class="bottom-right">
+                <div class="product-card">
+                    <img src="/assets/Broccoli.png" alt="Broccoli">
+                    <span class="year">2025</span>
+                </div>
+                <a href="#" class="btn-new-collection">new harvest ↗</a>
             </div>
-        </section>
-
-        <section id="users" class="section">
-            <div class="section-head">
-                <h2>Green Crew</h2>
-                <p>Members already part of the broccoli team.</p>
-            </div>
-            <div class="users-container">
-                <?php foreach ($users as $user): ?>
-                    <article class="user-card">
-                        <span class="user-id">#<?= htmlspecialchars($user['id']) ?></span>
-                        <span class="user-name"><?= htmlspecialchars($user['name']) ?></span>
-                    </article>
-                <?php endforeach; ?>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <p>Broccoli Arcade - Pure frontend PHP/CSS/JS without framework.</p>
-    </footer>
-
+        </footer>
+    </div>
     <script src="/js/home.js"></script>
 </body>
-
 </html>
