@@ -2,14 +2,14 @@
 /vendor
 composer.phar
 
-# Environment files (uncomment if you add .env support)
-# .env
-# .env.local
-# .env.*.local
+# Environment files
+.env
+.env.local
+.env.*.local
 
 # IDE and Editor files
 # .vscode/
-# .idea/
+.idea/
 # *.sublime-project
 # *.sublime-workspace
 
@@ -30,14 +30,12 @@ Thumbs.db
 # temp/
 
 # PHPUnit
-# .phpunit.result.cache
-# coverage/
-# phpunit.xml (if you want to keep phpunit.xml.dist only)
+.phpunit.result.cache
+/public/coverage/
 
-# Node modules (uncomment if you add frontend build tools)
-# node_modules/
-# package-lock.json
-# yarn.lock
+# Node modules
+node_modules/
+package-lock.json
 
 # Build files (uncomment if you add frontend build tools)
 # /public/dist/
