@@ -1,4 +1,7 @@
-FROM php:8.2-apache
+FROM php:8.4-apache
+
+# Outils système requis par Composer
+RUN apt-get update && apt-get install -y unzip git && rm -rf /var/lib/apt/lists/*
 
 # Extensions PHP nécessaires pour MySQL (PDO)
 RUN docker-php-ext-install pdo pdo_mysql
@@ -14,7 +17,7 @@ WORKDIR /var/www/html
 
 # Copier d'abord les fichiers Composer pour profiter du cache Docker
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install --no-dev --no-interaction
 
 # Copier tout le code source
 COPY . .
