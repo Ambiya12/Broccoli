@@ -10,6 +10,7 @@ require_once __DIR__ . "/../app/core/Router/router.php";
 use App\Controller\AuthController;
 use App\Controller\CollectionController;
 use App\Controller\HomeController;
+use App\Controller\RecipeController;
 use App\core\Middleware\AdminMiddleware;
 use App\core\Middleware\AuthMiddleware;
 
@@ -39,5 +40,6 @@ $router->get(
 // $router->get('/admin', [AdminController::class, 'index'], [AuthMiddleware::class, AdminMiddleware::class]);
 
 $router->get('/collection', [CollectionController::class, 'index']);
+$router->get('/recipe', [RecipeController::class, 'index'], [AuthMiddleware::class]);
 
 $router->run();

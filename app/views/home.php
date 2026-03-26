@@ -19,7 +19,7 @@
             </div>
             <nav class="main-nav">
                 <a href="/">main</a>
-                <a href="#">recipe</a>
+                <a href="/recipe">recipe</a>
                 <a href="#">fun fact</a>
                 <a href="/collection">collection</a>
             </nav>
