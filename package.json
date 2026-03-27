@@ -1,0 +1,25 @@
+{
+  "name": "broccoli",
+  "version": "1.0.0",
+  "description": "A minimalist MVC skeleton to quickly start your PHP projects. Clone this repo, install dependencies, and start coding.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch . --ext php,html,css,js --exec \"php -S localhost:8000 -t public\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ambiya12/Broccoli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ambiya12/Broccoli/issues"
+  },
+  "homepage": "https://github.com/Ambiya12/Broccoli#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

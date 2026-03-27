@@ -26,3 +26,11 @@ CREATE TABLE sessions (
 
 -- Migration pour une base existante :
 -- ALTER TABLE users ADD COLUMN role ENUM('user', 'admin') NOT NULL DEFAULT 'user' AFTER username;
+
+CREATE TABLE IF NOT EXISTS files (
+    fileId INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    extension VARCHAR(10),
+    size INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

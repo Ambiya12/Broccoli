@@ -1,32 +1,70 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue</title>
+    <title>Broccoli Store</title>
     <link rel="stylesheet" href="/css/home.css">
 </head>
-
-<body class="home-page">
-
-    <header class="hero">
-        <h1>Bienvenue sur Mon Projet MVC</h1>
-        <p>Testez et crée vos projets en toute simplicité</p>
-    </header>
-
-    <section id="users" class="users-section">
-        <h2>Utilisateurs</h2>
-        <div class="users-container">
-            <?php foreach ($users as $user): ?>
-                <div class="user-card">
-                    <span class="user-id"><?= htmlspecialchars($user['id']) ?></span>
-                    <span class="user-name"><?= htmlspecialchars($user['name']) ?></span>
+<body>
+    <div class="site-wrapper">
+        <header class="top-nav">
+            <div class="logo">
+                <div class="logo-text">
+                    Broc<br>coli
                 </div>
-            <?php endforeach; ?>
-        </div>
-    </section>
+                <div class="logo-stars">
+                    **<br>*
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="/">main</a>
+                <a href="/recipe">recipe</a>
+                <a href="#">fun fact</a>
+                <a href="/collection">collection</a>
+            </nav>
+            <div class="main-nav">
+                <?php if ($isLoggedIn): ?>
+                    <a href="/logout">logout</a>
+                <?php else: ?>
+                    <a href="/login">login</a>
+                <?php endif; ?>
+            </div>
+        </header>
 
+        <main class="hero-section">
+            <h1 class="hero-title left">Broc</h1>
+
+            <div class="center-image">
+                <img src="/assets/Broccoli.png" alt="Broccoli" />
+            </div>
+
+            <h1 class="hero-title right">coli</h1>
+        </main>
+
+        <footer class="bottom-section">
+            <div class="bottom-left">
+                <div class="recycle-icon">
+                    プラ
+                </div>
+                <h2>Food without<br>excess. Only health.</h2>
+                <p>
+                    Modern vegetables, natural<br>
+                    vitamins, and honest taste.<br>
+                    For those who choose<br>
+                    simplicity and health.
+                </p>
+            </div>
+
+            <div class="bottom-right">
+                <div class="product-card">
+                    <img src="/assets/Broccoli.png" alt="Broccoli">
+                    <span class="year">2025</span>
+                </div>
+                <a href="/collection" class="btn-new-collection">new harvest ↗</a>
+            </div>
+        </footer>
+    </div>
+    <script src="/js/home.js"></script>
 </body>
-
 </html>
